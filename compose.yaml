@@ -1,0 +1,20 @@
+services:
+  web:
+    image: ${IMAGE}
+    container_name: psychologist-system
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_NETWORK}
+      - traefik.http.routers.psychologist-system.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.psychologist-system.entrypoints=${TRAEFIK_ENTRYPOINT}
+      - traefik.http.routers.psychologist-system.tls=true
+      - traefik.http.routers.psychologist-system.tls.certresolver=${TRAEFIK_CERTRESOLVER}
+      - traefik.http.services.psychologist-system.loadbalancer.server.port=80
+
+networks:
+  proxy:
+    external: true
+    name: ${TRAEFIK_NETWORK}

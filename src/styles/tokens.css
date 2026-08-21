@@ -1,0 +1,15 @@
+:root {
+  --bg: #f5f1ea;
+  --bg-soft: #efe8dd;
+  --text: #252520;
+  --muted: #5f5d56;
+  --line: #d9d2c6;
+  --accent: #5c6857;
+  --accent-dark: #56614f;
+  --max: 1320px;
+  --radius: 28px;
+  --shadow: 0 18px 70px rgba(63, 52, 41, 0.08);
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  --header-h: 78px;
+}

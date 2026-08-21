@@ -1,0 +1,177 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: rgba(245, 241, 234, 0.78);
+  border-bottom: 1px solid rgba(217, 210, 198, 0.65);
+}
+
+.nav {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  font-weight: 700;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.brand span {
+  display: block;
+  font-size: 0.73rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.navlinks {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 0.84rem;
+  color: #47473f;
+}
+
+.navlinks a {
+  position: relative;
+  white-space: nowrap;
+}
+
+.navlinks a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+  transition: 0.25s;
+}
+
+.navlinks a:hover::after,
+.navlinks a.navActive::after {
+  right: 0;
+}
+
+.navActive {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.mobilePanel a.navActive::after {
+  content: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.menuToggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  place-items: center;
+  padding: 0;
+}
+
+.menuIcon,
+.menuIconOpen {
+  position: relative;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text);
+  display: block;
+  transition: 0.2s ease;
+}
+
+.menuIcon::before,
+.menuIcon::after,
+.menuIconOpen::before,
+.menuIconOpen::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text);
+  transition: 0.2s ease;
+}
+
+.menuIcon::before {
+  top: -5px;
+}
+
+.menuIcon::after {
+  top: 5px;
+}
+
+.menuIconOpen {
+  background: transparent;
+}
+
+.menuIconOpen::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menuIconOpen::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.mobilePanel {
+  display: none;
+  border-top: 1px solid rgba(217, 210, 198, 0.65);
+  background: rgba(245, 241, 234, 0.96);
+  padding: 10px 0 16px;
+}
+
+.mobilePanel nav {
+  display: grid;
+  gap: 2px;
+}
+
+.mobilePanel a {
+  display: block;
+  padding: 12px 0;
+  font-size: 0.98rem;
+  color: #3f3f38;
+  border-bottom: 1px solid rgba(217, 210, 198, 0.45);
+}
+
+.mobilePanel a:last-child {
+  border-bottom: none;
+}
+
+.mobilePanelOpen {
+  display: block;
+}
+
+@media (max-width: 980px) {
+  .navlinks {
+    display: none;
+  }
+
+  .menuToggle {
+    display: grid;
+  }
+}
+
+@media (min-width: 981px) {
+  .mobilePanel,
+  .mobilePanelOpen {
+    display: none;
+  }
+}
