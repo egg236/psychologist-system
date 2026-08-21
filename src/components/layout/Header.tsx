@@ -45,7 +45,7 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.nav}`}>
-        <a className={styles.brand} href="#top" onClick={closeMenu}>
+        <a className={styles.brand} href="/" onClick={closeMenu}>
           {site.brand.name}
           <span>{site.brand.tagline}</span>
         </a>
@@ -54,7 +54,7 @@ export function Header() {
           {site.nav.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={`/${item.href}`}
               className={navLinkClass(item.href)}
               aria-current={item.href === `#${activeId}` ? 'true' : undefined}
             >
@@ -89,7 +89,7 @@ export function Header() {
           {site.nav.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={`/${item.href}`}
               className={navLinkClass(item.href)}
               aria-current={item.href === `#${activeId}` ? 'true' : undefined}
               onClick={closeMenu}

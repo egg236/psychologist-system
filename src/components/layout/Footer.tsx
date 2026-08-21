@@ -12,6 +12,11 @@ export function Footer() {
         </p>
         <p>{site.footer.warning}</p>
         <p>{site.footer.demo}</p>
+        <p>
+          <a className={styles.link} href={site.footer.privacyHref}>
+            {site.footer.privacy}
+          </a>
+        </p>
       </div>
     </footer>
   )

@@ -3,6 +3,12 @@ import { expect, test } from '@playwright/test'
 const TELEGRAM_URL = 'https://t.me/yumyum135'
 
 test.describe('landing smoke', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('cookie-consent', 'accepted')
+    })
+  })
+
   test('homepage opens', async ({ page }) => {
     await page.goto('/')
     await expect(page).toHaveTitle(/Анна Морозова/)
