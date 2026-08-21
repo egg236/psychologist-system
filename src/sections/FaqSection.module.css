@@ -1,0 +1,41 @@
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.item {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 0;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.item summary::-webkit-details-marker {
+  display: none;
+}
+
+.item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--accent-dark);
+}
+
+.item[open] summary::after {
+  content: '–';
+}
+
+.item p {
+  padding: 0 0 20px;
+  color: var(--muted);
+  max-width: 800px;
+}

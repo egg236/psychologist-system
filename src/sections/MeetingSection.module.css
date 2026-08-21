@@ -1,0 +1,32 @@
+.meeting {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.28), rgba(231, 223, 212, 0.5));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.content {
+  max-width: 720px;
+}
+
+.lead {
+  margin-top: 14px;
+  color: #55544c;
+}
+
+.checklist {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.check {
+  display: flex;
+  gap: 12px;
+  color: #55544c;
+}
+
+.check::before {
+  content: '✓';
+  color: var(--accent-dark);
+  font-weight: 700;
+}
