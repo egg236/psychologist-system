@@ -21,7 +21,7 @@ test.describe('landing smoke', () => {
     const desktopNav = page.getByRole('navigation', {
       name: 'Навигация по разделам',
     })
-    const aboutLink = desktopNav.locator('a[href="#about"]')
+    const aboutLink = desktopNav.locator('a[href="/#about"]')
     await aboutLink.click()
     await expect(page.locator('#about')).toBeInViewport()
     await page.locator('#about').evaluate((el) => {
@@ -39,7 +39,7 @@ test.describe('landing smoke', () => {
       name: 'Мобильная навигация',
     })
     await expect(mobileNav).toBeVisible()
-    await mobileNav.locator('a[href="#price"]').click()
+    await mobileNav.locator('a[href="/#price"]').click()
     await expect(page.locator('#price')).toBeInViewport()
     await expect(mobileNav).toBeHidden()
   })
