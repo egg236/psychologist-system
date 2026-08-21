@@ -22,14 +22,14 @@ export function HeroSection() {
           </Button>
         </div>
       </Reveal>
-      <Reveal className={styles.art}>
+      <div className={styles.art}>
         <ResponsiveImage
           desktop={images.hero.desktop}
           mobile={images.hero.mobile}
           alt="Психолог Анна Морозова"
           loading="eager"
         />
-      </Reveal>
+      </div>
     </section>
   )
 }
