@@ -204,7 +204,7 @@ export const site = {
     privacyHref: '/privacy',
   },
   cookies: {
-    text: 'Мы используем cookies и локальное хранилище, чтобы сайт работал корректно и запоминал ваши предпочтения.',
+    text: 'Этот сайт использует cookies и локальное хранилище, чтобы работать корректно и запоминать ваши предпочтения.',
     more: 'Что такое cookies',
     moreHref: 'https://ru.wikipedia.org/wiki/Cookie',
     policy: 'Политика конфиденциальности',
