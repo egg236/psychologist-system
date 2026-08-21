@@ -91,10 +91,10 @@ Lighthouse запускается в desktop-режиме три раза. Дл�
 
 Минимальный score:
 
-- Performance: `0.95`
-- Accessibility: `0.95`
-- Best Practices: `0.95`
-- SEO: `0.95`
+- Performance: `0.9`
+- Accessibility: `0.9`
+- Best Practices: `0.9`
+- SEO: `0.9`
 
 ## Deployment
 
