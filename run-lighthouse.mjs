@@ -36,11 +36,39 @@ function waitForPort(port, timeoutMs = 60_000) {
 }
 
 function startPreview() {
-  return spawn('npm run preview:ci', {
-    cwd: root,
-    stdio: 'pipe',
-    shell: true,
-  })
+  // Spawn Vite directly in its own process group so CI can kill the tree.
+  return spawn(
+    process.platform === 'win32' ? 'npx.cmd' : 'npx',
+    ['vite', 'preview', '--host', '127.0.0.1', '--port', '4173', '--strictPort'],
+    {
+      cwd: root,
+      stdio: 'ignore',
+      detached: process.platform !== 'win32',
+      shell: process.platform === 'win32',
+    },
+  )
+}
+
+function stopPreview(preview) {
+  if (!preview?.pid) return
+
+  try {
+    if (process.platform === 'win32') {
+      spawn('taskkill', ['/pid', String(preview.pid), '/T', '/F'], {
+        stdio: 'ignore',
+        shell: true,
+      })
+      return
+    }
+
+    process.kill(-preview.pid, 'SIGKILL')
+  } catch {
+    try {
+      preview.kill('SIGKILL')
+    } catch {
+      // ignore shutdown races
+    }
+  }
 }
 
 function median(values) {
@@ -122,24 +150,15 @@ async function main() {
     console.log('Lighthouse assertions passed (>= 0.9)')
   } finally {
     await browser?.close().catch(() => {})
-    if (preview.pid) {
-      try {
-        if (process.platform === 'win32') {
-          spawn('taskkill', ['/pid', String(preview.pid), '/T', '/F'], {
-            stdio: 'ignore',
-            shell: true,
-          })
-        } else {
-          preview.kill('SIGTERM')
-        }
-      } catch {
-        // ignore shutdown races
-      }
-    }
+    stopPreview(preview)
   }
 }
 
-main().catch((error) => {
-  console.error(error)
-  process.exit(1)
-})
+main()
+  .then(() => {
+    process.exit(0)
+  })
+  .catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })
