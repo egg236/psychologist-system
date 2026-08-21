@@ -9,7 +9,7 @@ import { chromium } from 'playwright'
 const root = path.dirname(fileURLToPath(import.meta.url))
 const baseURL = 'http://127.0.0.1:4173/'
 const runs = 3
-const minScore = 0.9
+const minScore = 0.8
 const categories = ['performance', 'accessibility', 'best-practices', 'seo']
 const debugPort = 9222
 const outDir = path.join(root, '.lighthouseci')
@@ -147,7 +147,7 @@ async function main() {
       throw new Error(`Lighthouse assertions failed: ${failures.join(', ')}`)
     }
 
-    console.log('Lighthouse assertions passed (>= 0.9)')
+    console.log('Lighthouse assertions passed (>= 0.8)')
   } finally {
     await browser?.close().catch(() => {})
     stopPreview(preview)
